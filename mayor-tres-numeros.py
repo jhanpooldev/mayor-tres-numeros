@@ -1,24 +1,40 @@
-"""
-Determina el mayor de tres números ingresados por el teclado
-"""
-def intercambiar_valores(numero1, numero2):
-    temporal = numero1
-    numero1 = numero2
-    numero2 = temporal
-    return numero1, numero2
+class OrdenadorTresNumeros:
 
-numero1=int(input("Ingresa el primer numero : "))
-numero2=int(input("Ingresa el segundo numero: "))
-numero3=int(input("Ingresa el tercer numero : "))
+    def __init__(self, numero1, numero2, numero3):
+        self.numero1 = numero1
+        self.numero2 = numero2
+        self.numero3 = numero3
 
-if numero1>numero2:
-   numero1, numero2 = intercambiar_valores(numero1, numero2)
+    def ingresar_numeros(self):
+        self.numero1 = int(input("Ingresa el primer número: "))
+        self.numero2 = int(input("Ingresa el segundo número: "))
+        self.numero3 = int(input("Ingresa el tercer número: "))
 
-if numero2>numero3:
-    numero2, numero3 = intercambiar_valores(numero2, numero3)
+    def ordenar_numeros(self):
+        self.numero1, self.numero2, self.numero3 = sorted([self.numero1, self.numero2, self.numero3])
 
-if numero1>numero2:
-   numero1, numero2 = intercambiar_valores(numero1, numero2)
+    def imprimir_numeros(self, mensaje):
+        print(f"{mensaje}: {self.numero1}, {self.numero2}, {self.numero3}")
 
-print(f"numero ordenados: {numero1}, {numero2}, {numero3}")
-print(f"El mayor es {numero3}")
+if __name__ == "__main__":
+    numero1 = 5
+    numero2 = 10
+    numero3 = 1
+
+    numeros = OrdenadorTresNumeros(numero1, numero2, numero3)
+
+    numeros.imprimir_numeros("Números desordenados")
+
+    numeros.ordenar_numeros()
+
+    numeros.imprimir_numeros("Números ordenados")
+
+    print("\n ingresa tus  números:")
+    numeros.ingresar_numeros()
+
+    numeros.imprimir_numeros("Números desordenados")
+
+    numeros.ordenar_numeros()
+
+    numeros.imprimir_numeros("Números ordenados")
+
